@@ -1,5 +1,4 @@
 ﻿string[] defaultTexts = ["kotek", "Solid Snake", "SWPS"];
-Random textsRng = new Random();
 Random rng = new Random();
 Console.WriteLine("Podaj słowo do zgadywania:");
 string fullText = Console.ReadLine() ?? string.Empty;
@@ -8,7 +7,7 @@ if (string.IsNullOrWhiteSpace(fullText))
 {
     Console.WriteLine("Losuję tekst  do odgadnięcia");
     
-    int textIndex = textsRng.Next(defaultTexts.Length);
+    int textIndex = rng.Next(defaultTexts.Length);
     fullText = defaultTexts[textIndex];
 }
 
