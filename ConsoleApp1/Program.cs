@@ -44,7 +44,7 @@ while (lives > 0 && knownText != fullText)
 {
     Console.WriteLine($"Znany tekst: {knownText}");
     Console.WriteLine("Zgadnij literę:");
-    string letter = Console.ReadLine();
+    string letter = Console.ReadLine() ?? string.Empty;
 
     if (fullText.ToLower().Contains(letter.ToLower()))
     {
