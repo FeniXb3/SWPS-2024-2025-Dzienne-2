@@ -46,16 +46,16 @@ while (lives > 0 && knownText != fullText)
     Console.WriteLine("Zgadnij literę:");
     string letter = Console.ReadLine();
 
-    if (fullText.Contains(letter))
+    if (fullText.ToLower().Contains(letter.ToLower()))
     {
         for (int i = 0; i < knownText.Length; i++)
         {
             if (knownText[i] == '-')
             {
-                if (fullText[i].ToString() == letter)
+                if (fullText[i].ToString().ToLower() == letter.ToLower())
                 {
                     Console.WriteLine("Ta litera znajduje się w słowie!");
-                    knownLetters[i] = letter;
+                    knownLetters[i] = fullText[i].ToString();
                 }
             }
         }
