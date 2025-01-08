@@ -1,5 +1,17 @@
-﻿Console.WriteLine("Podaj słowo do zgadywania:");
-string fullText = Console.ReadLine();
+﻿string[] defaultTexts = ["kotek", "Solid Snake", "SWPS"];
+Random textsRng = new Random();
+Random rng = new Random();
+Console.WriteLine("Podaj słowo do zgadywania:");
+string fullText = Console.ReadLine() ?? string.Empty;
+
+if (string.IsNullOrWhiteSpace(fullText))
+{
+    Console.WriteLine("Losuję tekst  do odgadnięcia");
+    
+    int textIndex = textsRng.Next(defaultTexts.Length);
+    fullText = defaultTexts[textIndex];
+}
+
 Console.WriteLine("Ile jest szans na zgadnięcie?");
 if (!int.TryParse(Console.ReadLine(), out int lives))
 {
@@ -12,7 +24,6 @@ if (!int.TryParse(Console.ReadLine(), out int lives))
 string[] knownLetters = new string[fullText.Length];
 Array.Fill(knownLetters, "-");
 
-Random rng = new Random();
 int index = rng.Next(fullText.Length);
 string preguestLetter = fullText[index].ToString();
 
