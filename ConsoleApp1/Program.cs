@@ -9,6 +9,7 @@ if (string.IsNullOrWhiteSpace(fullText))
     int textIndex = Random.Shared.Next(defaultTexts.Length);
     fullText = defaultTexts[textIndex];
 }
+string lowerCaseFullText = fullText.ToLower();
 
 Console.WriteLine("Ile jest szans na zgadnięcie?");
 if (!int.TryParse(Console.ReadLine(), out int lives))
@@ -44,15 +45,15 @@ while (lives > 0 && knownText != fullText)
 {
     Console.WriteLine($"Znany tekst: {knownText}");
     Console.WriteLine("Zgadnij literę:");
-    string letter = Console.ReadLine() ?? string.Empty;
+    string letter = Console.ReadLine()?.ToLower() ?? string.Empty;
 
-    if (fullText.ToLower().Contains(letter.ToLower()))
+    if (lowerCaseFullText.Contains(letter))
     {
         for (int i = 0; i < knownText.Length; i++)
         {
             if (knownText[i] == '-')
             {
-                if (fullText[i].ToString().ToLower() == letter.ToLower())
+                if (lowerCaseFullText[i].ToString() == letter)
                 {
                     Console.WriteLine("Ta litera znajduje się w słowie!");
                     knownLetters[i] = fullText[i].ToString();
